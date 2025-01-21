@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      title="msg://markReportListView.title"
+      focusComponent="markReportsDataGrid">
+    <data>
+        <collection id="markReportsDc"
+                    class="com.itbm.logcentr.entity.MarkReport">
+            <loader id="markReportsDl" readOnly="true"/>
+
+        </collection>
+        <instance class="com.itbm.logcentr.entity.ExtServers" id="srvlist">
+            <fetchPlan extends="_base"/>
+            <loader id="serverList">
+                <query>
+                    <![CDATA[select e from ExtServers e]]>
+                </query>
+            </loader>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <comboBox id="serverList" label="Сервер данных" dataContainer="srvlist" property="host">
+            <itemsQuery escapeValueForLike="true"
+                        searchStringFormat="(?i)%${inputString}%">
+                <query>
+                    <![CDATA[select e.name from ExtServers e where e.name
+            like :searchString escape '\' order by e.name asc]]>
+                </query>
+            </itemsQuery>
+        </comboBox>
+        <button text="Проверить связь"/>
+
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <simplePagination id="pagination" dataLoader="markReportsDl"/>
+        </hbox>
+        <dataGrid id="markReportsDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="markReportsDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="id"/>
+                <column property="username"/>
+                <column property="operation"/>
+                <column property="duration"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectButton" action="selectAction"/>
+            <button id="discardButton" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>

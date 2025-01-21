@@ -20,6 +20,7 @@ import java.util.*
 ])
 open class User : JmixUserDetails, HasTimeZone {
 
+//fff
     @Id
     @Column(name = "ID", nullable = false)
     @JmixGeneratedValue

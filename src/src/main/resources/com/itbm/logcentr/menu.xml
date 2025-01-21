@@ -3,6 +3,14 @@
 
     <menu id="application" title="msg://com.itbm.logcentr/menu.application.title" opened="true">
         <item view="User.list" title="msg://com.itbm.logcentr.view.user/UserListView.title"/>
+        <item view="ExtServers.list" title="msg://com.itbm.logcentr.view.extservers/extServersListView.title"/>
+        <separator/>
+<!--        <item view="MarkReport.list" title="msg://com.itbm.logcentr.view.markreport/markReportListView.title"/>-->
     </menu>
 
+    <menu id="application1" title="Отчеты" opened="true">
+<!--        <item view="ExtServers.list" title="msg://com.itbm.logcentr.view.extservers/extServersListView.title"/>-->
+        <separator/>
+        <item view="MarkReport.list" title="msg://com.itbm.logcentr.view.markreport/markReportListView.title"/>
+    </menu>
 </menu-config>

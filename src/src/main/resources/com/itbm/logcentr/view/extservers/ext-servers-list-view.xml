@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<view xmlns="http://jmix.io/schema/flowui/view"
+      xmlns:c="http://jmix.io/schema/flowui/jpql-condition"
+      title="msg://extServersListView.title"
+      focusComponent="extServersesDataGrid">
+    <data>
+        <collection id="extServersesDc"
+                    class="com.itbm.logcentr.entity.ExtServers">
+            <fetchPlan extends="_base"/>
+            <loader id="extServersesDl" readOnly="true">
+                <query>
+                    <![CDATA[select e from ExtServers e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <urlQueryParameters>
+            <genericFilter component="genericFilter"/>
+            <pagination component="pagination"/>
+        </urlQueryParameters>
+    </facets>
+    <actions>
+        <action id="selectAction" type="lookup_select"/>
+        <action id="discardAction" type="lookup_discard"/>
+    </actions>
+    <layout>
+        <genericFilter id="genericFilter"
+                       dataLoader="extServersesDl">
+            <properties include=".*"/>
+        </genericFilter>
+        <hbox id="buttonsPanel" classNames="buttons-panel">
+            <button id="createButton" action="extServersesDataGrid.create"/>
+            <button id="editButton" action="extServersesDataGrid.edit"/>
+            <button id="removeButton" action="extServersesDataGrid.remove"/>
+            <simplePagination id="pagination" dataLoader="extServersesDl"/>
+        </hbox>
+        <dataGrid id="extServersesDataGrid"
+                  width="100%"
+                  minHeight="20em"
+                  dataContainer="extServersesDc"
+                  columnReorderingAllowed="true">
+            <actions>
+                <action id="create" type="list_create"/>
+                <action id="edit" type="list_edit"/>
+                <action id="remove" type="list_remove"/>
+            </actions>
+            <columns resizable="true">
+                <column property="name"/>
+                <column property="host"/>
+                <column property="port"/>
+            </columns>
+        </dataGrid>
+        <hbox id="lookupActions" visible="false">
+            <button id="selectButton" action="selectAction"/>
+            <button id="discardButton" action="discardAction"/>
+        </hbox>
+    </layout>
+</view>
