@@ -8,14 +8,16 @@
             <loader id="markReportsDl" readOnly="true"/>
 
         </collection>
-        <instance class="com.itbm.logcentr.entity.ExtServers" id="srvlist">
+        <collection class="com.itbm.logcentr.entity.ExtServers"
+                    id="serverDc">
             <fetchPlan extends="_base"/>
-            <loader id="serverList">
+            <loader id="serverDl">
                 <query>
                     <![CDATA[select e from ExtServers e]]>
                 </query>
             </loader>
-        </instance>
+        </collection>
+        <instance id="serverID" class="com.itbm.logcentr.entity.ExtServers" fetchPlan="_base"/>
     </data>
     <facets>
         <dataLoadCoordinator auto="true"/>
@@ -28,7 +30,11 @@
         <action id="discardAction" type="lookup_discard"/>
     </actions>
     <layout>
-        <comboBox id="serverList" label="Сервер данных" dataContainer="srvlist" property="host">
+        <hbox alignItems="CENTER">
+        <comboBox id="serverList"
+                      dataContainer="serverDc"
+                      property="name"
+                      colspan="Выберите сервер" helperText="Выберите сервер">
             <itemsQuery escapeValueForLike="true"
                         searchStringFormat="(?i)%${inputString}%">
                 <query>
@@ -37,8 +43,11 @@
                 </query>
             </itemsQuery>
         </comboBox>
-        <button text="Проверить связь"/>
-
+        <vbox>
+        <span id="CHBage" text="" themeNames="badge normal"/>
+        <button id="CheckButtonClick" text="Проверить связь"/>
+        </vbox>
+        </hbox>
         <hbox id="buttonsPanel" classNames="buttons-panel">
             <simplePagination id="pagination" dataLoader="markReportsDl"/>
         </hbox>
