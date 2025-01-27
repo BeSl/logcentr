@@ -15,6 +15,7 @@
     <actions>
         <action id="saveAction" type="detail_saveClose"/>
         <action id="closeAction" type="detail_close"/>
+<!--        <action id="pingButton" type="pingButton"/>-->
     </actions>
     <layout>
         <formLayout id="form" dataContainer="extServersDc">
@@ -23,12 +24,12 @@
                 <responsiveStep minWidth="40em" columns="2"/>
             </responsiveSteps>
             <vbox>
-                <textField id="nameField" property="name"/>
+                <textField id="nameField" property="name" width="75%"/>
                 <hbox>
                     <textField id="hostField" property="host" label="Адрес сервера"/>
                     <textField id="portField" property="port" label="Порт"/>
                 </hbox>
-                <hbox>
+                <hbox >
                     <textField id="loginField" property="login" label="Логин"/>
                     <textField id="passwordField" property="password" label="Пароль"/>
                 </hbox>
@@ -39,6 +40,7 @@
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>
             <button id="closeButton" action="closeAction"/>
+            <button id="pingButton" icon="PLAY" text="Проверить доступ"/>
         </hbox>
     </layout>
 </view>
