@@ -26,21 +26,25 @@
             <vbox>
                 <textField id="nameField" property="name" width="75%"/>
                 <hbox>
-                    <textField id="hostField" property="host" label="Адрес сервера"/>
-                    <textField id="portField" property="port" label="Порт"/>
+                    <textField id="hostField" property="host" label="Адрес сервера" width="50%"/>
+                    <textField id="portField" property="port" label="Порт" width="50%"/>
                 </hbox>
                 <hbox >
                     <textField id="loginField" property="login" label="Логин"/>
                     <textField id="passwordField" property="password" label="Пароль"/>
                 </hbox>
-
+                <button id="pingButton" icon="PLAY" text="Проверить подключение"/>
+                <hbox>
+                    <comboBox id="dbNameField" property="dbname" label="База данных"/>
+                    <comboBox id="table_nameField" property="table_name" label="Таблица"/>
+                </hbox>
             </vbox>
 
         </formLayout>
         <hbox id="detailActions">
             <button id="saveAndCloseButton" action="saveAction"/>
             <button id="closeButton" action="closeAction"/>
-            <button id="pingButton" icon="PLAY" text="Проверить доступ"/>
+
         </hbox>
     </layout>
 </view>

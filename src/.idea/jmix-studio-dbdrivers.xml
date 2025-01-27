@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DatabaseDriversConfigurationState">
     <drivers>
-      <db-driver id="org.hsqldb.jdbc.JDBCDriver">
+      <db-driver id="org.hsqldb.jdbc.JDBCDriver" version="2.7.0">
         <library url="/C:/Users/admin/.gradle/caches/modules-2/files-2.1/org.hsqldb/hsqldb/2.7.3/85b49338b36f3051d217295596cf92beb92e4bfb/hsqldb-2.7.3.jar" />
       </db-driver>
     </drivers>

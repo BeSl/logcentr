@@ -33,4 +33,10 @@ open class ExtServers {
 
     @Column(name = "PASSWORD")
     var password: String? = null
+
+    @Column(name = "DBNAME")
+    var dbname: String? = null
+
+    @Column(name = "TABLE_NAME")
+    var table_name: String? = null
 }
