@@ -13,6 +13,7 @@
         <dataLoadCoordinator auto="true"/>
     </facets>
     <actions>
+        <action id="openAction" type="entity_open"/>
         <action id="saveAction" type="detail_saveClose"/>
         <action id="closeAction" type="detail_close"/>
 <!--        <action id="pingButton" type="pingButton"/>-->
